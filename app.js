@@ -11,8 +11,13 @@ app.set("views",path.join(__dirname,"views"));
 const methodOverride = require("method-override");
 app.use(methodOverride("_method"));
 
+const ejsMate = require('ejs-mate');
+app.engine("ejs",ejsMate);
+// This tells Express how to render .ejs files using a specific rendering function called ejsMate.
 
 
+app.use(express.static(path.join(__dirname,"/public")));
+// This line tells Express to serve static files from your public folder.
 
 // to access req.body
 app.use(express.json());

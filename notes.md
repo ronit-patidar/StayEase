@@ -1,5 +1,5 @@
 npm init -y
-npm i express ejs mongoose method-override
+npm i express ejs mongoose method-override ejs-mate
 New-Item app.js
 
 Model:Listing->place(apartment,flat,house,villa,hotel)
