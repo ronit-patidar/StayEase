@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const port = 8080;
 
+const wrapAsync = require("./util/wrapAsync");
+
+
 // setting up ejs
 const path = require("path");
 app.set("view engine","ejs");
@@ -68,11 +71,13 @@ app.get('/listings/:id',async (req,res)=>{
 })
 
 // Create Route 
-app.post('/listings',async(req,res)=>{
-  const newListing = new Listing (req.body.listing);
-  await newListing.save();
-  res.redirect("/listings");
-})
+app.post('/listings',wrapAsync(async (req,res,next)=>{
+    const newListing = new Listing (req.body.listing);
+    await newListing.save();
+    res.redirect("/listings");
+    next(err);
+  }
+))
 
 // Edit Route
 app.get("/listings/:id/edit",async (req,res)=>{
@@ -91,7 +96,7 @@ app.put("/listings/:id",async(req,res)=>{
 //Delete Route
 app.delete("/listings/:id",async (req,res)=>{
   const {id} = req.params;
-  // let deletedListing = await Listing.findByIdAndDelete(id);
+  let deletedListing = await Listing.findByIdAndDelete(id);
   // console.log(deletedListing);
   res.redirect("/listings");
 })
@@ -112,7 +117,9 @@ app.delete("/listings/:id",async (req,res)=>{
 //   res.send("Successfull testing")
 // })
 
-
+app.use((err,req,res,next)=>{
+  res.send("Something went wrong");
+})
 
 app.listen(port,()=>{
   console.log(`Server is listening on port ${port}`);
