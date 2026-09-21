@@ -21,3 +21,6 @@ frontend se jo data ja raha he kya wo sahi format me he or correct hai.
 server side validation
 jo data hum db me send kar rahe he wo schema ko follow karna chahiye.
 When we enter data in the form,the browser and/or the web server will check to see that the data is in the correct format and within the constraints set by the application.
+
+New Model : Reviews
+comment(String),rating(1 to 5)(Number),createdAt(data and time)

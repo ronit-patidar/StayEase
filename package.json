@@ -18,5 +18,8 @@
     "joi": "^18.2.9",
     "method-override": "^3.0.0",
     "mongoose": "^9.10.0"
+  },
+  "devDependencies": {
+    "@shufo/prettier-plugin-blade": "^1.16.2"
   }
 }
