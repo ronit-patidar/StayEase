@@ -61,7 +61,7 @@
 
         <!-- Leave a Review -->
 
-        <div class="col-8 offset-2">
+        <div >
 
           <h4>Leave a Review</h4>
 
@@ -116,38 +116,48 @@
 
           <hr />
 
-          <!-- All Reviews -->
+<!-- All Reviews -->
 
-          <p><b>All Reviews</b></p>
+<p><b>All Reviews</b></p>
 
-          <div class="row">
+<div class="row row-cols-1 row-cols-md-2 g-3">
 
-            <% for(review of listing.reviews) { %>
+  <% for(review of listing.reviews) { %>
 
-              <div class="card col-5 mb-3">
+    <div class="col">
 
-                <div class="card-body">
+      <div class="card h-100 shadow-sm">
 
-                  <h5 class="card-title">
-                    Jane Doe
-                  </h5>
+        <div class="card-body">
 
-                  <p class="card-text">
-                    <%= review.comment %>
-                  </p>
+          <h5 class="card-title">
+            Jane Doe
+          </h5>
 
-                  <p class="card-text">
-                    <%= review.rating %> star
-                  </p>
+          <p class="card-text">
+            <%= review.comment %>
+          </p>
 
-                </div>
+          <p class="card-text text-muted">
+            <%= review.rating %>⭐
+          </p>
 
-              </div>
+          <form
+            method="POST"
+            action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
+          >
+            <button class="btn btn-sm btn-dark">Delete</button>
+          </form>
 
-            <% } %>
+        </div>
 
-          </div>
+      </div>
 
+    </div>
+
+  <% } %>
+
+</div>
         </div>
 
       </div>
