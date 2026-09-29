@@ -24,3 +24,9 @@ When we enter data in the form,the browser and/or the web server will check to s
 
 New Model : Reviews
 comment(String),rating(1 to 5)(Number),createdAt(data and time)
+
+express.Router() 
+Express router are a way to organize your express application such that our primary app.js file does not became bloated.
+const router = express.Router() // creates a new router object
+to segrigate multiple routes
+Cookies
