@@ -17,7 +17,8 @@
       >
 
       <div class="card-body">
-
+        <p class="card-text">Owned By <i><%= listing.owner.username %></i></p>
+        
         <p class="card-text">
           <%= listing.description %>
         </p>
@@ -36,14 +37,14 @@
           <strong>Country:</strong>
           <%= listing.country %>
         </p>
-
+        <%if(currUser && listing.owner._id.equals(currUser._id)){%>
         <div class="d-flex gap-2 mt-4">
 
           <a
             href="/listings/<%= listing._id %>/edit"
             class="btn btn-dark"
           >
-            Edit this listing
+            Edit
           </a>
 
           <form
@@ -51,12 +52,13 @@
             action="/listings/<%= listing._id %>?_method=DELETE"
           >
             <button class="btn btn-danger">
-              Delete this listing
+              Delete
             </button>
           </form>
-
         </div>
-
+        <% } %>
+        
+        <% if(currUser) {%>
         <hr>
 
         <!-- Leave a Review -->
@@ -113,7 +115,7 @@
             </button>
 
           </form>
-
+          <% } %>
           <hr />
 
 <!-- All Reviews -->
@@ -131,7 +133,7 @@
         <div class="card-body">
 
           <h5 class="card-title">
-            Jane Doe
+            <%= review.author.username %>
           </h5>
 
           <p class="card-text">

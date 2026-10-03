@@ -7,8 +7,11 @@ const Review = require('./models/review.js');
 const wrapAsync = require("./util/wrapAsync");
 const ExpressError = require("./util/ExpressError");
 const {listingSchema,reviewSchema} = require('./schema.js');
-const listings = require('./routes/listing.js');
-const reviews = require('./routes/review.js');
+
+const listingsRouter = require('./routes/listing.js');
+const reviewsRouter = require('./routes/review.js');
+const userRouter = require('./routes/user.js');
+
 const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');
@@ -68,10 +71,21 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req,res,next) => {
-  res.locals.success = req.flash("success");
+  res.locals.success = req.flash("success");  
   res.locals.error = req.flash("error");
+  res.locals.currUser = req.user;
   next();
 })
+
+// app.get("/demouser",async(req,res) => {
+//   let fakerUser = new User({
+//     email : "student@gmail.com",
+//     username : "delta-student",
+//   })
+//   let registeredUser = await User.register(fakeUser,"helloworld");
+//   res.send(registeredUser);
+// })
+
 
 async function main(){
   await mongoose.connect(process.env.MONGO_URI);
@@ -85,8 +99,9 @@ main().then(()=>{
 
 
 
-app.use('/listings',listings);
-app.use('/listings/:id/reviews',reviews);
+app.use('/listings',listingsRouter);
+app.use('/listings/:id/reviews',reviewsRouter);
+app.use('/',userRouter);
 
 
 
