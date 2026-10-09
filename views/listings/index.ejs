@@ -1,22 +1,65 @@
-<% layout("/layouts/boilerplate.ejs") %>
-    <h3>All Listings</h3>
-    <!-- <form method="GET" action="/listings/new">
-    <button>Create New Listing</button>
-  </form> -->
-    <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-3">
-      <% for(let listing of allListing){ %>
-        <a href="/listings/<%= listing._id %>" class="listing-link">
-        <div class="card col">
-          <img src="<%= listing.image %>" class="card-img-top" alt="listing_image" style="height:20rem" />
-          <div class="card-img-overlay"></div>
-          <div class="card-body">
-            <p class="card-text">
-              <b><%= listing.title %></b><br>
-                &#8377;<%= listing.price.toLocaleString("en-IN") %>/night
-            </p>
-          </div>
+<% layout('/layouts/boilerplate.ejs') %>
+
+<% block('style').append('index') %>
+
+<div class="filter">
+    <% for(let category in listingCategories) { %>
+
+        <div
+            class="filters <%= category === selectedCategory ? 'active-filter' : '' %>"
+            data-category="<%= category %>"
+        >
+
+            <i class="<%= listingCategories[category] %>"></i>
+            <p><%= category %></p>
+
         </div>
-        </a>
-        <% } %>
+
+    <% } %>
+
+    <div class="tax-toggle">
+        <div class="form-check-reverse form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+            <label class="form-check-label" for="switchCheckDefault">Display total after Taxes</label>
+        </div>
     </div>
+</div>
+
+<p class="ms-3 mb-0 fw-bold">Find your next adventure <i class="fa-solid fa-arrow-right"></i></p>
+
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mb-5">
     
+    <% for(let listings of allListings) { %>
+
+        <a href="/listings/<%= listings._id %>" class="listing-link">
+            <div class="card listing-card m-3">
+
+                <img
+                    src="<%= listings.image?.url || listings.image %>"
+                    class="card-img-top"
+                    alt="listing-img"
+                />
+
+                <div class="card-img-overlay">
+                    <b>
+                        <%= listings.title.split(' ')[0] %>
+                    </b>
+                </div>
+
+                <div class="card-body">
+                    <p class="card-text">
+                        <b><%= listings.title %></b> <br>
+                        &#x20B9; <%= listings.price.toLocaleString('en-IN') %> / night
+                        &nbsp; <i class="gst">+18% gst</i>
+                    </p>
+
+                </div>
+
+            </div>
+        </a>
+
+    <% } %>
+    
+</div>
+
+<script src="/js/index.js"></script>

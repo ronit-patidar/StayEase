@@ -1,0 +1,648 @@
+/* =========================================
+   1. BASE STYLES (Layout & Design)
+   No interactions here. Just how things look.
+   ========================================= */
+
+body {
+    user-select: none;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    height: 80vh;
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/assets/hero.avif');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    border-radius: 1rem;
+    margin-top: 1rem;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.explore-btn {
+    background-color: #fe424d;
+    color: white;
+    padding: 0.8rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 25px;
+    border: none;
+    transition: transform 0.2s;
+}
+
+/* --- Feature Cards (Base) --- */
+.features {
+    margin-top: 8rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.feature-card {
+    border: none;
+    border-radius: 20px;
+    border: 3px solid #8f8f8f;
+    background-color: #f8f9fa;
+    padding: 2rem;
+    margin: .5rem;
+    height: 90%;
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+#card-2 {
+    transform: translateY(-10px) scale(1.05);
+    border: 3px solid #ff9097;
+    background-color: #fff0f1;
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    color: #fe424d;
+    margin-bottom: 1rem;
+}
+
+/* --- Split Cards (Base) --- */
+.split-card {
+    position: relative;
+    height: 450px;
+    border-radius: 20px 0 20px 0;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.split-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    display: flex;
+    transition: all 0.5s ease;
+}
+
+.split-content .btn {
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.split-content h3 {
+    font-weight: 800;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Card Top Base */
+.card-top {
+    border: 3px solid #8f8f8f;
+    border-radius: 20px 0 20px 0;
+    background-color: #f8f9fa;
+    color: #333;
+    clip-path: polygon(0 0, 98% 0, 0 98%);
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.card-top-cover {
+    background-color: #8f8f8f;
+    border-radius: 20px 0 0 0;
+    clip-path: polygon(0 0, 99% 0%, 0 99%);
+}
+
+.top-text {
+    max-width: 60%;
+}
+
+/* Card Bottom Base */
+.card-bottom {
+    border: 3px solid #ff9097;
+    border-radius: 20px 0 20px 0;
+    background-color: #fff0f1;
+    color: black;
+    clip-path: polygon(2% 100%, 100% 100%, 100% 2%);
+    align-items: flex-end;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.card-bottom-cover {
+    border-radius: 0 0 20px 0;
+    background-color: #ff9097;
+    clip-path: polygon(1% 100%, 100% 100%, 100% 1%);
+}
+
+.bottom-text {
+    max-width: 60%;
+}
+
+.content-wrapper h3 {
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.content-wrapper p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+/* Icons & Content Base */
+.big-icon {
+    position: absolute;
+    font-size: 8rem;
+    opacity: .9;
+    color: #fe424d;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.card-top .big-icon {
+    left: 15%;
+    bottom: 40%;
+}
+
+.card-bottom .big-icon {
+    left: 75%;
+    top: 28%;
+    transform: rotate(270deg);
+}
+
+.glass-desc-box {
+    position: absolute;
+    bottom: 3rem;
+    left: 3rem;
+    width: 400px;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px 0 15px 0;
+    color: white;
+    text-align: left;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translateX(-1000px);
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: 5;
+}
+
+.glass-desc-box h5 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #fe424d;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.glass-desc-box p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+    line-height: 1.4;
+    opacity: 0.9;
+}
+
+.glass-host-pos {
+    bottom: auto;
+    left: auto;
+    top: 3rem;
+    right: 3rem;
+    transform: translateX(1000px);
+    text-align: right;
+}
+
+/* Call to Action Base */
+.cta-section {
+    background-image: url('/assets/travel.avif');
+    background-size: cover;
+    background-position: center;
+    padding: 5rem;
+    margin-top: 8rem;
+    margin-bottom: 6rem;
+    height: 45vh;
+    position: relative;
+    color: white;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.cta-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(0,0,0,0.4), rgba(0,0,0,0.4));
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+}
+
+.cta-section h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.cta-section .btn-outline-light {
+    border-width: 2px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+.btn-outline-light:hover {
+    color: #fe424d;
+}
+
+
+/* =========================================
+   2. MOBILE LAYOUTS (Screens under 768px)
+   This handles the SHAPE changes for mobile
+   ========================================= */
+
+@media (max-width: 768px) {
+    .hero-section {
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+        min-height: 80vh;
+        border-radius: 0;
+        background-position: center bottom;
+    }
+
+    .hero-content {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-top: 4rem;
+        padding-bottom: 3rem;
+    }
+
+    .hero-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        line-height: 1.1;
+    }
+
+    .hero-title span {
+        display: block;
+        font-size: 3rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    .hero-title .small-word {
+        font-size: 2rem;
+        font-weight: 400;
+        margin: 5px 0;
+    }
+
+    .hero-title .brand-name {
+        font-size: 3.3rem;
+        color: #ff385c;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    }
+
+    .hero-content p {
+        margin-top: auto;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        opacity: 0.9;
+        max-width: 80%;
+        align-self: center;
+    }
+
+    .hero-content .btn {
+        width: 50%;
+        align-self: center;
+        padding: 0.5rem 1rem;
+    }
+
+    /* Reset Feature Card Default Transform */
+    #card-2 {
+        transform: translateY(0) scale(1);
+    }
+
+    /* Split Card Mobile Geometry */
+    .split-card {
+        height: 700px;
+    }
+
+    .card-top {
+        clip-path: polygon(0 0, 100% 0, 100% 38.5%, 75% 48.5%, 25% 48.5%, 0 58.5%);
+    }
+
+    .card-top-cover {
+        clip-path: polygon(0 0, 100% 0, 100% 39.5%, 75% 49.5%, 25% 49.5%, 0 59.5%);
+    }
+
+    /* 3. Bottom Card Zig-Zag Geometry */
+    .card-bottom {
+        clip-path: polygon(0 61.5%, 25% 51.5%, 75% 51.5%, 100% 41.5%, 100% 100%, 0 100%);
+    }
+
+    .card-bottom-cover {
+        clip-path: polygon(0 60.5%, 25% 50.5%, 75% 50.5%, 100% 40.5%, 100% 100%, 0 100%);
+    }
+    .top-text, .bottom-text {
+        max-width: 100%;
+    }
+    
+    /* Icon Mobile Positions */
+    .card-top .big-icon {
+        left: 28%;
+        bottom: 53%;
+    }
+
+    .card-bottom .big-icon {
+        left: 28%;
+        top: 55%;
+        transform: scale(.9) rotate(270deg);
+    }
+
+    .glass-desc-box {
+        width: 90%;
+        bottom: 40%;
+        left: 5%;
+    }
+
+    .glass-host-pos {
+        top: auto;
+        right: auto;
+    }
+
+    /* CTA Section Mobile */
+    .cta-section {
+        height: auto;
+        padding: 1rem; 
+        margin-top: 4rem;
+        border-radius: 25px;
+        text-align: center;
+        background-position: center center;
+        background-size: cover;
+    }
+
+    .cta-section h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+
+    .cta-section p {
+        color: white;
+        text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+        font-weight: 500;
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .cta-section .btn {
+        width: 100%;
+        display: block;
+        margin: 5px 0;
+        padding: 12px 0;
+        border-radius: 50px;
+    }
+}
+
+
+/* =========================================
+   3. ROOM A: MOUSE INTERACTIONS (Hover) 🐭
+   Only devices with a mouse see this.
+   ========================================= */
+
+@media (hover: hover) {
+    /* Feature Cards Hover */
+    .explore-btn:hover {
+        background-color: #d93b45;
+        transform: scale(1.05);
+        color: white;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        color: white;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .feature-card:hover .feature-icon {
+        color: white;
+    }
+
+    #card-1:hover {
+        background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/assets/card-1.avif');
+    }
+
+    #card-2:hover {
+        background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/assets/card-2.avif');
+        transform: translateY(-15px) scale(1.08);
+        border: 3px solid #8f8f8f;
+    }
+
+    #card-3:hover {
+        background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/assets/card-3.avif');
+    }
+
+    /* Split Card Hover */
+    .card-top-cover:hover .card-top,
+    .card-bottom-cover:hover .card-bottom {
+        background-size: cover;
+        background-position: center;
+        color: white;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .card-top-cover:hover .card-top {
+        background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/assets/card-4.avif');
+    }
+
+    .card-bottom-cover:hover .card-bottom {
+        background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/assets/card-5.avif');
+    }
+    
+    .card-top-cover:hover h3,
+    .card-bottom-cover:hover h3 {
+        color: #fe424d;
+    }
+
+    .card-top-cover:hover .btn,
+    .card-bottom-cover:hover .btn {
+        pointer-events: auto;
+        background-color: #fe424d;
+        border: none;
+    }
+    
+    /* Wrapper Expansion */
+    .card-top-cover:hover,
+    .card-bottom-cover:hover {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        z-index: 10;
+    }
+
+    /* Icons & Glass */
+    .card-top-cover:hover .big-icon {
+        left: 64%;
+        bottom: 12%;
+        opacity: 1;
+        transform: scale(1.2);
+        filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
+    }
+
+    .card-bottom-cover:hover .big-icon {
+        left: 11%;
+        top: 24%;
+        opacity: 1;
+        transform: scale(1.2) rotate(0deg);
+        filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
+    }
+
+    .card-top-cover:hover .glass-desc-box,
+    .card-bottom-cover:hover .glass-desc-box {
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+        transition-delay: 0.2s;
+    }
+
+    .card-top-cover:hover .glass-desc-box:hover,
+    .card-bottom-cover:hover .glass-desc-box:hover {
+        transform: scale(1.05);
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(20px);
+        border-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+        cursor: default; /* Shows arrow instead of pointer */
+    }
+}
+
+
+/* =========================================
+   4. ROOM B: TOUCH INTERACTIONS (Active) 📱
+   Triggers when JS adds '.touch-active'
+   ========================================= */
+
+/* Feature Cards Active */
+.feature-card.touch-active {
+    transform: translateY(0px) scale(1.05);
+    color: white;
+    background-size: cover;
+    background-position: center;
+}
+
+.feature-card.touch-active .feature-icon {
+    color: white;
+}
+
+#card-1.touch-active {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/assets/card-1.avif');
+}
+
+#card-2.touch-active {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/assets/card-2.avif');
+    transform: translateY(0px) scale(1.05);
+    border: 3px solid #8f8f8f;
+}
+
+#card-3.touch-active {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/assets/card-3.avif');
+}
+
+/* Split Card Active */
+.card-top-cover.touch-active .card-top,
+.card-bottom-cover.touch-active .card-bottom {
+    background-size: cover;
+    background-position: center;
+    color: white;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.card-top-cover.touch-active .card-top {
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/assets/card-4.avif');
+}
+
+.card-bottom-cover.touch-active .card-bottom {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/assets/card-5.avif');
+}
+
+.card-top-cover.touch-active h3,
+.card-bottom-cover.touch-active h3 {
+    color: #fe424d;
+}
+
+.card-top-cover.touch-active .btn,
+.card-bottom-cover.touch-active .btn {
+    pointer-events: auto;
+    background-color: #fe424d;
+    border: none;
+}
+
+.glass-desc-box.glass-active {
+    transform: scale(1.05);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    z-index: 20; /* Ensure it sits on top */
+}
+
+/* Wrapper Expansion Active */
+.card-top-cover.touch-active,
+.card-bottom-cover.touch-active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    z-index: 10;
+}
+
+/* Icon Active (With Mobile Positioning) */
+@media (max-width: 768px) {
+    .card-top-cover.touch-active .big-icon {
+        left: 28%;
+        bottom: 8%;
+        opacity: 1;
+        transform: scale(1.5);
+        filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
+    }
+
+    .card-bottom-cover.touch-active .big-icon {
+        left: 28%;
+        top: 10%;
+        opacity: 1;
+        transform: scale(1.4) rotate(0deg);
+        filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
+    }
+}
+
+.card-top-cover.touch-active .glass-desc-box,
+.card-bottom-cover.touch-active .glass-desc-box {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+    transition-delay: 0.2s;
+}

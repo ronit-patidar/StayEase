@@ -1,0 +1,83 @@
+/* Cards */
+.listing-card {
+    border: none;
+}
+
+.listing-link {
+    text-decoration: none;
+}
+
+/* card effect */
+.card-img-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.3);
+    opacity: 0;
+}
+
+.card-img-overlay b {
+    color: white;
+    font-size: 1.25rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.card:hover .card-img-overlay {
+    opacity: 1;
+}
+
+/* filter */
+.filter {
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    gap: 1rem;
+    white-space: nowrap;
+    overflow-x: auto;
+    cursor: pointer;
+}
+
+.filter::-webkit-scrollbar {
+    display: none;
+}
+
+.filters {
+    width: 7rem;
+    text-align: center;
+    opacity: 0.7;
+}
+
+.filters:hover {
+    opacity: 1;
+    border-bottom: 2px solid #ddd;
+}
+
+.filters p{
+    font-size: .7rem;
+    margin: 0;
+}
+
+.active-filter {
+    opacity: 1;
+    border-bottom: 1.5px solid black !important;
+    font-weight: bold;
+    transform: scale(1.1);
+}
+
+.tax-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 10px;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.gst {
+    display: none;
+}

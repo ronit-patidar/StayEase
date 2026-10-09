@@ -1,43 +1,162 @@
-<% layout("/layouts/boilerplate.ejs") %>
-<div class="row">
-  <div class="col-8 offset-2">
-  <h3>Edit your Listing</h3>
-    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation" >
-      <div class="mb-3">
-        <label for="title" class="form-label">Title</label>
-        <input name="listing[title]" value="<%= listing.title %>" type="text" class="form-control" required/>
-        <div class="valid-feedback">Looks good!</div>
-      </div>
+<% layout('/layouts/boilerplate.ejs') %>
 
-      <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <textarea name="listing[description]" class="form-control" required>
-  <%=listing.description%></textarea>
-        <div class="invalid-feedback">Description should be valid</div>
-      </div>
-      <div class="mb-3">
-        <label for="image" class="form-label">Image</label>
-        <input name="listing[image]" value="<%= listing.image %>" type="text" class="form-control" required />
-      </div>
-      <div class="row">
-      <div class="mb-3 col-md-4">
-        <label for="price" class="form-label">Price</label>
-        <input name="listing[price]" value="<%= listing.price %>" type="number" class="form-control" required />
-        <div class="invalid-feedback">Price should be valid</div>
-      </div>
-      <div class="mb-3 col-md-8">
-        <label for="country" class="form-label">Country</label>
-        <input name="listing[country]" value="<%= listing.country %>" type="text" class="form-control" required/>
-        <div class="invalid-feedback">Country should be valid</div>
-      </div>
-      </div>
-      <div class="mb-3">
-        <label for="location" class="form-label">Location</label>
-        <input name="listing[location]" value="<%= listing.location %>" type="text" class="form-control" required/>
-        <div class="invalid-feedback">Location should be valid</div>
-      </div>
+<div class="row mt-3 mb-5">
+    <div class="col-12 col-md-6 offset-md-3">
 
-      <button class="btn btn-dark add-btn">Edit</button><br><br>
-    </form>
+        <h3>Edit your listing</h3>
+
+        <form
+            method="POST"
+            action="/listings/<%= listing._id %>?_method=PUT"
+            class="needs-validation"
+            novalidate
+            enctype="multipart/form-data"
+            >
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input
+                    id="title"
+                    type="text"
+                    name="listing[title]"
+                    placeholder="Add catchy title"
+                    value="<%= listing.title %>"
+                    class="form-control"
+                    required
+                />
+                <div class="invalid-feedback">
+                    Oops! No title? Even movies with no budget have one. 🎬😂
+                </div>
+                <div class="valid-feedback">
+                    Nice title! Sounds exciting already. 🚀
+                </div>
+            </div>
+
+            <label for="image" class="form-label">Listing Image</label>
+            <div class="col-12">
+                <div class="card p-3 mb-3" style="border: 1px solid #dee2e6;">
+
+                    <div class="mb-3">
+                        <img
+                            src="<%= listing.image.url %>"
+                            class="card-img-top s-img"
+                            alt="listing-img"
+                        />
+                    </div>
+                    
+                    <div class="card-body">
+                        <input
+                            type="file"
+                            name="listing[image]"
+                            class="form-control"
+                        />
+                    </div>
+
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <label for="category" class="form-label">Select Category</label>
+                <select
+                    id="category"
+                    class="form-select"
+                    aria-label="Default select example"
+                    name="listing[category]"
+                    required
+                >
+                    <% for(let category in listingCategories) { %>
+                        <option 
+                            value="<%= category %>"
+                            <%= listing.category === category ? 'selected' : '' %> 
+                        >
+                            <%= category %>
+                        </option>
+                    <% } %>
+                </select>
+                <div class="invalid-feedback">
+                    Don't be lazy! You just have to click one. 🫵
+                </div>
+                <div class="valid-feedback">
+                    Now your listing has a category! 😂
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea
+                    id="description"
+                    name="listing[description]"
+                    placeholder="Enter Description"
+                    class="form-control"
+                    required
+                ><%= listing.description %></textarea>
+                <div class="invalid-feedback">
+                    Description missing! Say something… even a potato has a story. 🥔✨
+                </div>
+                <div class="valid-feedback">
+                    Great description! You’re selling the vibe. ✨
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="mb-3 col-12 col-md-4">
+                    <label for="price" class="form-label">Price</label>
+                    <input
+                        id="price"
+                        type="number"
+                        name="listing[price]"
+                        placeholder="Enter Price"
+                        value="<%= listing.price %>"
+                        class="form-control"
+                        required
+                    />
+                    <div class="invalid-feedback">
+                        No price? Bro this isn’t charity! 💸🤣
+                    </div>
+                    <div class="valid-feedback">
+                        Perfect price! Wallets won’t cry. 💸
+                    </div>
+                </div>
+
+                <div class="mb-3 col-12 col-md-8">
+                    <label for="country" class="form-label">Country</label>
+                    <input
+                        id="country"
+                        type="text"
+                        name="listing[country]"
+                        placeholder="Enter Country"
+                        value="<%= listing.country %>"
+                        class="form-control"
+                        required
+                    />
+                    <div class="invalid-feedback">
+                        Country missing! Not even aliens forget their planet. 👽🌍
+                    </div>
+                    <div class="valid-feedback">
+                        Country locked in! ✈️ Ready for global vibes.
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <input
+                    id="location"
+                    type="text"
+                    name="listing[location]"
+                    placeholder="Enter Location"
+                    value="<%= listing.location %>"
+                    class="form-control"
+                    required
+                />
+                <div class="invalid-feedback">
+                    Location empty? Google Maps is crying right now. 📍😢
+                </div>
+                <div class="valid-feedback">
+                    Location set! Maps would be proud. 🗺️
+                </div>
+            </div>
+
+            <button class="btn btn-danger mt-4">Edit</button>
+        </form>
     </div>
-  </div>
+</div>

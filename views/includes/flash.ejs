@@ -1,22 +1,23 @@
-<% if(success && success.length){ %>
-  <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
-    <%= success %>
-    <button
-    type="button"
-    class="btn-close"
-    data-bs-dismiss="alert"
-    aria-label="Close"
-    ></button>
-  </div>
-<% } %>
-<% if(error && error.length){ %>
-  <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
-    <%= error %>
-    <button
-    type="button"
-    class="btn-close"
-    data-bs-dismiss="alert"
-    aria-label="Close"
-    ></button>
-  </div>
+<% 
+    const flashes = [
+        { message: success, type: 'success' },
+        { message: error, type: 'danger' },
+        { message: warning, type: 'warning' },
+    ];
+%>
+
+<% for (let flash of flashes) { %>
+    <% if (flash.message && flash.message.length) { %>
+        <div class="row mt-3 col-10 offset-1 col-md-8 offset-md-2">
+            <div class="alert alert-<%= flash.type %> alert-dismissible fade show m-0 text-center" role="alert">
+                <%= flash.message %>
+                <button
+                    type="button"
+                    class="btn-close top-50 translate-middle-y"
+                    data-bs-dismiss="alert"
+                    aria-label="Close">
+                </button>
+            </div>
+        </div>
+    <% } %>
 <% } %>

@@ -1,0 +1,77 @@
+<% layout('/layouts/boilerplate.ejs') %>
+
+<% block('style').append('home') %>
+
+<div class="hero-section">
+    <div class="hero-content">
+        <h1 class="hero-title">
+            <span>Welcome</span>
+            <span class="small-word">to</span>
+            <span class="brand-name">Stayease</span>
+        </h1>
+        <p>Stay somewhere you’ll talk about for years</p>
+        <a href="/listings" class="btn explore-btn">Explore Hotels</a>
+    </div>
+</div>
+
+<div class="container features">
+    <div class="row">
+        <div class="col-12 col-md-4">
+            <div class="feature-card js-touch-card" id="card-1">
+                <i class="fa-solid fa-house-chimney feature-icon"></i>
+                <h3>Home away from Home</h3>
+                <p>Discover unique homes and stays perfect for your trip.</p>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+            <div class="feature-card js-touch-card" id="card-2">
+                <i class="fa-solid fa-shield-halved feature-icon"></i>
+                <h3>Book with Confidence</h3>
+                <p>Enjoy peace of mind with our secure booking protection.</p>
+            </div>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="feature-card js-touch-card" id="card-3">
+                <i class="fa-solid fa-headset feature-icon"></i>
+                <h3>24/7 Support</h3>
+                <p>Our team is here to help you, day or night.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="cta-section">
+    <div class="cta-overlay"></div>
+    <div class="container position-relative">
+        <div class="row align-items-center">
+            <div class="col-lg-7 text-center text-lg-start mb-4 mb-lg-0">
+                
+                <% if(!currUser) { %>
+                    <h2>Ready to start your journey?</h2>
+                    <p class="mb-3">Join Stayease today. Sign up to get the latest travel deals.</p>
+                <% } else { %>
+                    <h2>Welcome back, <%= currUser.username %>!</h2>
+                    <p class="mb-3">The world is waiting. Where will you go next?</p>
+                <% } %>
+            </div>
+            
+            <div class="col-lg-5 text-center text-lg-end">
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center justify-content-lg-end">
+                    
+                    <% if(!currUser) { %>
+                        <a href="/signup" class="btn btn-outline-light btn-lg px-4 rounded-pill fw-bold">Sign Up</a>
+                        <a href="/login" class="btn btn-outline-light btn-lg px-4 rounded-pill fw-bold">Log in</a>
+                    <% } else { %>
+                        <a href="/listings/new" class="btn btn-outline-light btn-lg px-4 rounded-pill fw-bold">Host Your Home</a>
+                        <a href="/listings" class="btn btn-outline-light btn-lg px-4 rounded-pill fw-bold">Browse Hotels</a>
+                    <% } %>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/home.js"></script>

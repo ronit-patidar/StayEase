@@ -1,0 +1,51 @@
+/* Review Stars */
+.fa-star{
+    color: #ffca08;
+}
+
+.fa-regular.fa-star {
+    color: #cfcfcf; 
+}
+
+.rating-star.fa-regular:hover {
+    color: #ffca08;
+}
+#map {
+    height: 400px;
+    width: 100%;
+}
+.fa-regular.black-star {
+    color: gray;
+}
+
+/* review text */
+.review-text {
+    max-height: 100px;
+    overflow-y: auto;
+    overflow-wrap: break-word;
+}
+
+.review-text::-webkit-scrollbar {
+    display: none;
+}
+
+.img-box {
+    height: 10rem;
+    width: 20rem;
+    object-fit: cover;
+}
+
+/* map */
+#map {
+    height: 25rem;
+    width: 100%;
+    border-radius: 5px;
+}
+
+/* Mobile Styling */
+@media (max-width: 768px) {
+
+    #map {
+        height: 22rem;
+    }
+}

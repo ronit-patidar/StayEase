@@ -1,29 +1,135 @@
-<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top mb-3">
+<nav class="navbar navbar-expand-md border-bottom sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/"><i class="fa-regular fa-compass"></i></a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNavAltMarkup"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <a class="navbar-brand" href="/">
+      <h3 class="d-flex align-items-center Stayease">
+        <!-- W
+        <%- include('compass_icon') %>
+        nderL
+        <%- include('map_pin_icon') %>
+        st -->
+        <span style="color : #FF5A5F">Stayease</span>
+      </h3>
+    </a>
+
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link" href="/">Home</a>
-        <a class="nav-link" href="/listings">All Listings</a>
-        <a class="nav-link" href="/listings/new">Add new Listing</a>
-      </div>
-      <div class="navbar-nav ms-auto">
-        <% if(!currUser) {%>
-        <a class="nav-link" href="/signup">Sign up</a>
-        <a class="nav-link" href="/login">Log in</a>
-        <% } %> 
-        <% if(currUser) { %>
-        <a class="nav-link" href="/logout">Log out</a>
-        <% } %>
-      </div>
+
+      <form
+        action="/listings"
+        class="d-flex search-bar-form"
+        role="search"
+      >
+        <input
+          class="form-control me-2 search-inp"
+          type="search"
+          placeholder="Search Destinations"
+          aria-label="Search"
+          name="location"
+        />
+
+        <button class="btn search-btn" type="submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
+
     </div>
+
+    <!-- User Menu -->
+    <div
+      class="nav-link card sign-up-btn"
+      role="button"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+      >
+      <i class="fa-solid fa-bars sign-up-ham"></i>
+      <i class="fa-solid fa-circle-user sign-up-user"></i>
+    </div>
+
+    <ul class="dropdown-menu dropdown-menu-end p-4 mt-2 me-2 sign-up-box">
+
+      <!-- User Menu List Item -->
+      <li class="d-md-none pb-2">
+        <form
+          action="listings"
+          class="d-flex"
+          role="search"
+        >
+          <input
+            class="form-control me-2 search-inp"
+            type="search"
+            placeholder="Search Destinations"
+            aria-label="Search"
+            name="location"
+          />
+
+          <button class="btn search-btn" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </form>
+      </li>
+      <li class="d-md-none"><hr class="dropdown-divider"></li>
+
+
+      <% if (currUser) { %>
+
+        <li class="px-3 pt-2 fw-bold">
+          <i class="fa-solid fa-circle-user"></i>
+          <%= currUser.username %>
+        </li>
+        <li class="px-3 pb-2 text-muted">
+          <i class="fa-regular fa-envelope"></i>
+          <%= currUser.email %>
+        </li>
+        <li><hr class="dropdown-divider"></li>
+
+      <% } else { %>
+
+        <li class="px-3 pt-2 fw-bold">
+          Welcome, Traveler!
+        </li>
+        <li class="px-3 pb-1 text-muted small">
+          The world is yours to explore.
+        </li>
+        <li><hr class="dropdown-divider"></li>
+        
+      <% } %>
+
+      <li>
+        <a class="px-3 pt-2 fw-bold dropdown-item" href="/listings/new">Become a host</a>
+      </li>
+      <li class="px-3 pb-1 text-muted small">
+        It's easy to start hosting and earn extra income.
+      </li>
+      <li><hr class="dropdown-divider"></li>
+
+      <li>
+        <a class="px-3 pt-2 fw-bold dropdown-item" href="/listings">Discover stays</a>
+      </li>
+      <li class="px-3 pb-1 text-muted small">
+        Browse top-rated listings for your next trip.
+      </li>
+      <li><hr class="dropdown-divider"></li>
+
+      <% if(currUser) { %>
+
+        <li>
+          <a class="px-3 pt-2 fw-bold dropdown-item" href="/logout">Log out</a>
+        </li>
+        <li class="px-3 pb-1 text-muted small">
+          See you on your next trip.
+        </li>
+
+      <% } else { %>
+
+        <li>
+          <a class="px-3 pt-2 fw-bold dropdown-item" href="/signup">Join Stayease</a>
+        </li>
+        <li class="px-3 pb-1 text-muted small">
+          Unlock exclusive offers and faster booking.
+        </li>
+
+      <% } %>
+
+    </ul>
+    
   </div>
 </nav>

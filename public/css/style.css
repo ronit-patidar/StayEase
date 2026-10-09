@@ -1,81 +1,274 @@
-body{
-  font-family: "Plus Jakarta Sans", sans-serif ;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-/* New.ejs */
-.container{
-  flex: 1;
-}
-.add-btn{
-  background-color: #fe424d !important;
-  border: none !important;
-}
-/* Navbar */
-.navbar{
-  height:5rem;
-  background-color: white;
-}
-.fa-compass{
-  color:#fe424d;
-  font-size:2rem;
-}
-.nav-link{
-  color:#222222 !important;
+body::-webkit-scrollbar {
+    display: none;
 }
 
-/* footer */
-.f-info-links a{
-  text-decoration: none;
-  color: #222222;
-}
-.f-info-links a:hover{
-  text-decoration: underline;
-}
-.f-info-links,.f-info-socials,.f-info-brand{
-  width: 100%;
+body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
 }
-.f-info-socials i{
-  font-size: 1.2rem;
-  margin-right: 1rem;
+
+.container {
+    flex: 1;
 }
-.f-info{
-  text-align: center;
-  height: 8rem;
-  background-color: #ebebeb;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: space-evenly;
+
+h1, h2, h3 {
+  font-weight: 700;
 }
-/* Cards */
-.card{
-  border: none !important;
-  margin-bottom: 2rem;
+
+button {
+  font-weight: 500;
 }
-.card-img-top{
-  border-radius:1rem !important;
-  width: 100% !important;
-  object-fit: cover !important;
+
+/*
+    =============================================
+        NAVBAR SECTION - START
+    =============================================
+*/
+
+.navbar {
+    padding: 1.2rem .7rem;
+    background-color: white;
 }
-.card-body{
-  padding: 0 !important;
+
+.nav-link {
+    color: #222222;
+    transition: transform .3s ease;
 }
-.card-text p {
-  font-weight: 400 !important;
+
+.nav-link:hover {
+    color: #222222;
+    transform: scale(1.07);
 }
-.listing-link{
-  text-decoration: none;
+
+/* stayease Logo  */
+.stayease {
+    color:#fe424d;
+    transform: scale(.9);
+    margin: 0;
 }
-/* Card Effect */
-.card-img-overlay{
-  opacity: 0;
+
+.navbar-brand {
+    margin: 0;
 }
-.card-img-overlay:hover{
-  opacity: 0.2;
-  background-color: white;
+
+.compass-needle {
+    transform-origin: center;
+    transform-box: fill-box;
+    transition: transform 0.5s ease;
+}
+
+.navbar-brand:hover .compass-needle {
+    animation: crazyCompass 6s infinite;
+}
+
+@keyframes crazyCompass {
+    0%   { transform: rotate(0deg); }
+    15%  { transform: rotate(270deg); }
+    25%  { transform: rotate(90deg); }
+    50%  { transform: rotate(1080deg); }
+    75%  { transform: rotate(90deg); }
+    85%  { transform: rotate(270deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.map-pin-u {
+    transition: transform 5s ease;
+}
+
+.navbar-brand:hover .map-pin-u {
+    animation: bounce .4s infinite alternate;
+}
+
+@keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-4px); }
+}
+
+/* user menu */
+.sign-up-user {
+    color: #fe424d;
+    font-size: 1.6rem;
+    display: inline-block;
+    margin-left: 3px;
+}
+
+.sign-up-ham {
+    color: #484848;
+    font-size: 1.4rem;
+}
+
+.sign-up-btn {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    border: 1px solid #dddddd;
+    border-radius: 50px;
+    padding: 5px 10px;
+    transition: 0.3s;
+}
+
+.sign-up-box {
+    border-radius: 15px;
+}
+
+.sign-up-btn:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+    cursor: pointer;
+}
+
+/* User Menu Drop Down Menu */
+.dropdown-menu { 
+    width: 300px;
+    position: absolute;
+}
+
+/* Search bar */
+.search-btn {
+    background-color: #fe424d;
+    color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .3s ease;
+}
+
+.search-btn:hover {
+    background-color: #fe424d;
+    color: #fff;
+}
+
+.search-inp {
+    border-radius: 15px;
+    padding: 0.5rem 3rem 0.5rem 3rem;
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* 
+    =============================================
+        FOOTER SECTION - START
+    =============================================
+*/
+
+.f-info-links a {
+    text-decoration: none;
+    color: #222222;
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+}
+
+.f-info {
+    background-color: #ebebeb;
+    height: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.f-info div {
+    margin: .2rem;
+}
+
+.f-info-socials i {
+    font-size: 1.2rem;
+    margin: 0 .5rem;
+}
+
+/* 
+    =============================================
+        IMAGE CARD SECTION - START
+    =============================================
+*/
+
+.card-body {
+    margin: 0;
+    padding: 0;
+}
+
+.card-img-top {
+    border-radius: 1rem;
+    width: 100%;
+    object-fit: cover;
+    height: 17rem;
+}
+
+.s-img{
+    border-radius: .4rem;
+    height: 25rem;
+}
+
+/* 
+    =============================================
+        FORM SECTION - START
+    =============================================
+*/
+
+.form-label {
+    margin-bottom: 0;
+}
+
+/* 
+    =============================================
+        SELECT-NONE
+    =============================================
+*/
+
+i,
+.stayease,
+.nav-link,
+.filter,
+.tax-toggle {
+    user-select: none;
+}
+
+
+/* 
+    =============================================
+        MOBILE SECTION - START
+    =============================================
+*/
+
+@media (max-width: 768px) {
+    
+    .compass-needle {
+        animation: crazyCompass 6s 1 alternate; 
+    }
+
+    .map-pin-u {
+        animation: bounce .4s 16 alternate;
+    }
+
+    .s-img {
+        height: 20rem;
+    }
+
+    .dropdown-menu {
+        max-width: 90vw;
+    }
+
+    .search-inp {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 0 0 15px;
+        text-align: left;
+    }
+}
+
+
+@media (min-width: 768px) { 
+  .search-bar-form {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000; 
+  }
 }
