@@ -97,7 +97,6 @@ _Add screenshots of the home page and listings page here._
 
 - Booking calendar and availability
 - Search and filters by location and price
-- Reviews and ratings
 - Payment integration
 
 ## Author
