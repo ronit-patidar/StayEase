@@ -8,7 +8,7 @@ Stayease is a full-stack accommodation booking platform where travelers can disc
 
 > **Note:** The demo is hosted on Render's free tier, so it sleeps after a period of inactivity. The first load can take 30-60 seconds while the server wakes up.
 
-![Stayease home page](public\assets\image.png)
+![public\assets\image.png](public\assets\image.png)
 
 ## Features
 
@@ -121,7 +121,7 @@ Open `http://localhost:8080` in your browser.
 
 | Listings page |
 | --- |
-| ![Listings](public\assets\image2.png) |
+| ![public\assets\image2.png](public\assets\image2.png) |
 
 
 ## Future Improvements
