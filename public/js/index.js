@@ -3,7 +3,9 @@ const filters = document.querySelectorAll('.filters');
 filters.forEach((filter) => {
     filter.addEventListener('click', () => {
         const category = filter.dataset.category;
-        window.location.href = `/listings?category=${category}`;
+        window.location.href = category
+            ? `/listings?category=${encodeURIComponent(category)}`
+            : '/listings';
     });
 });
 

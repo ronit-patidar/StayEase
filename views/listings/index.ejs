@@ -3,6 +3,14 @@
 <% block('style').append('index') %>
 
 <div class="filter">
+    <div
+        class="filters <%= !selectedCategory ? 'active-filter' : '' %>"
+        data-category=""
+    >
+        <i class="fa-solid fa-border-all"></i>
+        <p>All</p>
+    </div>
+
     <% for(let category in listingCategories) { %>
 
         <div

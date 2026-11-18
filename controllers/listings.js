@@ -8,27 +8,30 @@ module.exports.index = async (req, res) => {
     
     if (category) {
         query.category = category;
-        
-    } else if (location) {
-        const searchWords = location.split(" ");
-
-        const allQueries = searchWords.map(word => ({
-            $or: [
-                { location: new RegExp(word, 'i') },
-                { country: new RegExp(word, 'i') }
-            ]
-        }));
-
-        query.$or = allQueries;
     }
-    
+    if (location && location.trim()) {
+        const searchText = location.trim();
+
+        const safeSearchText = searchText.replace(
+            /[.*+?^${}()|[\]\\]/g,
+            '\\$&'
+        );
+        const searchRegex = new RegExp(safeSearchText, 'i');
+
+        query.$or = [
+            { title: searchRegex },
+            { location: searchRegex },
+            { country: searchRegex }
+        ];
+    }    
     const allListings = await Listing.find(query);
-    
-    if (location && allListings.length === 0) {
-        req.flash('warning', `We couldn't find any listings for "${location}". Try another spot!`);
+     if (location && allListings.length === 0) {
+        req.flash(
+            'warning',
+            `We couldn't find any listings for "${location}". Try another spot!`
+        );
         return res.redirect('/listings');
-    }
-    
+    }    
     res.render("listings/index", { allListings, selectedCategory: category });
 }
 
